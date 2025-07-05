@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: NotesProps) {
       url: 'https://08-zustand-pink.vercel.app/notes/filter/all',
       images: [
         {
-          content: 'https://prnt.sc/R5sJy2rpJKKC',
+          url: 'https://prnt.sc/R5sJy2rpJKKC',
           width: 1200,
           height: 630,
           alt: allNotes,
