@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: NotesProps) {
       title: allNotes,
       description:
         'The centralized hub for all your notes. Organize, store, and easily access your entire collection of information.',
-      url: 'https://08-zustand-pink.vercel.app/notes/filter',
+      url: 'https://08-zustand-pink.vercel.app/notes/filter/all',
       images: [
         {
           url: '/allNotes.png',
