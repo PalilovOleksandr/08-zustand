@@ -11,7 +11,7 @@ export interface Note {
 
 export interface CreateNote {
   title: string;
-  content: string;
+  content?: string;
   tag: Tags;
 }
 

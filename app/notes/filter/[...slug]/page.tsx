@@ -7,7 +7,7 @@ type NotesProps = {
 
 export async function generateMetadata({ params }: NotesProps) {
   const { slug } = await params;
-  const allNotes = slug[0] === 'all' ? 'All Notes' : slug[0];
+  const allNotes = slug[0] === 'all' ? 'All Notes' : `${slug[0]} notes`;
   return {
     title: allNotes,
     description:

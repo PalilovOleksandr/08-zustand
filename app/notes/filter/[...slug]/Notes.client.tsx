@@ -11,6 +11,7 @@ import { useDebounce } from 'use-debounce';
 import { NotesHttpResponse } from '@/types/note';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
+import Link from 'next/link';
 
 type NoteClientProps = {
   initialData: NotesHttpResponse;
@@ -48,9 +49,6 @@ const NotesClient = ({ initialData, tag }: NoteClientProps) => {
   function handlePageChange(page: number) {
     setCurrentPage(page);
   }
-  function openModal() {
-    setIsModalOpen(true);
-  }
   function closeModal() {
     setIsModalOpen(false);
   }
@@ -66,14 +64,14 @@ const NotesClient = ({ initialData, tag }: NoteClientProps) => {
             onChange={handlePageChange}
           />
         )}
-        <button className={css.button} onClick={openModal}>
+        <Link href="/notes/action/create" className={css.button}>
           Create note +
-        </button>
+        </Link>
       </header>
       {data && data.notes.length > 0 && <NoteList notes={data.notes} />}
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <NoteForm onClose={closeModal} />
+          <NoteForm />
         </Modal>
       )}
     </div>
