@@ -56,7 +56,7 @@ export default function NoteForm() {
   };
 
   const handleCancel = () => {
-    router.push('/notes/filter/all');
+    router.back();
   };
 
   return (
