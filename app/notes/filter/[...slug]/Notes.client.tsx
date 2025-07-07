@@ -9,8 +9,6 @@ import { useEffect, useState } from 'react';
 import css from './page.module.css';
 import { useDebounce } from 'use-debounce';
 import { NotesHttpResponse } from '@/types/note';
-import Modal from '@/components/Modal/Modal';
-import NoteForm from '@/components/NoteForm/NoteForm';
 import Link from 'next/link';
 
 type NoteClientProps = {
@@ -20,7 +18,6 @@ type NoteClientProps = {
 
 const NotesClient = ({ initialData, tag }: NoteClientProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [debouncedQuery] = useDebounce(searchQuery, 300);
 
@@ -49,9 +46,6 @@ const NotesClient = ({ initialData, tag }: NoteClientProps) => {
   function handlePageChange(page: number) {
     setCurrentPage(page);
   }
-  function closeModal() {
-    setIsModalOpen(false);
-  }
 
   return (
     <div className={css.app}>
@@ -69,11 +63,6 @@ const NotesClient = ({ initialData, tag }: NoteClientProps) => {
         </Link>
       </header>
       {data && data.notes.length > 0 && <NoteList notes={data.notes} />}
-      {isModalOpen && (
-        <Modal onClose={closeModal}>
-          <NoteForm />
-        </Modal>
-      )}
     </div>
   );
 };

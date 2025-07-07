@@ -1,11 +1,14 @@
+import { Metadata } from 'next';
 import NotesClient from './Notes.client';
 import { fetchNotes } from '@/lib/api';
 
 type NotesProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 };
 
-export async function generateMetadata({ params }: NotesProps) {
+export async function generateMetadata({
+  params,
+}: NotesProps): Promise<Metadata> {
   const { slug } = await params;
   const allNotes = slug[0] === 'all' ? 'All Notes' : `${slug[0]} notes`;
   return {
@@ -16,7 +19,7 @@ export async function generateMetadata({ params }: NotesProps) {
       title: allNotes,
       description:
         'The centralized hub for all your notes. Organize, store, and easily access your entire collection of information.',
-      url: 'https://08-zustand-pink.vercel.app/notes/filter/all',
+      url: `https://08-zustand-pink.vercel.app/notes/filter/${allNotes}`,
       images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
